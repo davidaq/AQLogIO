@@ -1,13 +1,8 @@
 package com.davidaq.logio.Model;
 
-import com.jcraft.jsch.*;
-import com.sun.corba.se.impl.interceptors.InterceptorInvoker;
-import com.sun.corba.se.spi.orbutil.fsm.Input;
-
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 
 public class RemoteLogInput implements LogInput {
     private final RemoteLogConfig config;
