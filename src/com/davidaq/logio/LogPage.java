@@ -2,6 +2,7 @@ package com.davidaq.logio;
 
 import com.davidaq.logio.Model.LogInput;
 import com.davidaq.logio.Model.RemoteLogConfig;
+import com.davidaq.logio.Model.RemoteLogInput;
 import com.davidaq.logio.Model.TestLogInput;
 
 import javax.swing.*;
@@ -33,7 +34,7 @@ public class LogPage implements TabPage.Content {
         this.logConfig = logConfig;
         logConfig.ui = this;
 
-        input = new TestLogInput();
+        input = new RemoteLogInput(logConfig);
 
         textWrapPanel.setLayout(null);
         textWrapPanel.setOpaque(false);
@@ -97,7 +98,7 @@ public class LogPage implements TabPage.Content {
         }
         if (row < 0)
             row = 0;
-        if (updateTimestamp < input.getUpdateTimestamp() && currentPos == row && lastPos == lastVisibleLine)
+        if (updateTimestamp <= input.getUpdateTimestamp() && currentPos == row && lastPos == lastVisibleLine)
             return;
         updateTimestamp = input.getUpdateTimestamp();
         currentPos = row;
