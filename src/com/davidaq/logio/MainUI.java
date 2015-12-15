@@ -97,6 +97,18 @@ public class MainUI extends JFrame {
                 logListModel.fireUpdate(index);
             }
         });
+        addLogListContextMenuItem("克隆", new ContextMenuAction() {
+            @Override
+            public void run(int index, RemoteLogConfig item) {
+                RemoteLogConfig nItem = new RemoteLogConfig(item);
+                index++;
+                logListModel.add(index, nItem);
+                logList.setSelectedIndex(index);
+                ConfigRemoteLogDialog.editExisting(nItem);
+                logListModel.save();
+                logListModel.fireUpdate(index);
+            }
+        });
         logListContextMenu.addSeparator();
         addLogListContextMenuItem("提前", moveItemAction(-1));
         addLogListContextMenuItem("置后", moveItemAction(1));

@@ -11,9 +11,11 @@ import java.io.InputStreamReader;
 
 public class ExecHelper {
     private final Session session;
+    private final String charset;
 
-    public ExecHelper(Session session) {
+    public ExecHelper(Session session, String charset) {
         this.session = session;
+        this.charset = charset;
     }
 
     public int exec(String command, StringBuilder output) {
@@ -24,7 +26,7 @@ public class ExecHelper {
             channel.setInputStream(null);
             channel.setErrStream(null);
             InputStream in = new BufferedInputStream(channel.getInputStream());
-            InputStreamReader reader = new InputStreamReader(in);
+            InputStreamReader reader = new InputStreamReader(in, charset);
             channel.connect();
             char buff[] = new char[1000];
             while (true) {

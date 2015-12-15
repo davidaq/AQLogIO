@@ -70,7 +70,7 @@ public class LogPage implements TabPage.Content {
     private void updateUI(boolean forceUsePos) {
         FontMetrics metrics = textPane.getFontMetrics(textPane.getFont());
         int lineHeight = metrics.getHeight();
-        int visibleHeight = scrollPane.getViewport().getHeight();
+        int visibleHeight = scrollPane.getViewport().getHeight() - 5;
         int visibleLines = visibleHeight / lineHeight;
         int lineCount = input.getLineCount();
         int row;
@@ -108,9 +108,9 @@ public class LogPage implements TabPage.Content {
                 text.append('\n');
         }
         String str = text.toString();
-        //int hVal = scrollPane.getHorizontalScrollBar().getValue();
         textPane.setText(str);
-        scrollPane.getHorizontalScrollBar().setValue(scrollPane.getHorizontalScrollBar().getMinimum());
+        textPane.setSelectionStart(0);
+        textPane.setSelectionEnd(0);
         int vMax = lineCount - visibleLines;
         if (vMax < 1) {
             vScroll.setValue(0);

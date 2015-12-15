@@ -18,6 +18,7 @@ public class ConfigRemoteLogDialog extends JDialog {
     private JTextField keyFileField;
     private JButton keyFileBtn;
     private JTextField pathField;
+    private JTextField charsetField;
     private boolean canceled = false;
 
     private final RemoteLogConfig config;
@@ -38,6 +39,7 @@ public class ConfigRemoteLogDialog extends JDialog {
         passwordField.setText(config.password);
         keyFileField.setText(config.keyFile);
         pathField.setText(config.path);
+        charsetField.setText(config.charset == null ? "UTF-8" : config.charset);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +77,7 @@ public class ConfigRemoteLogDialog extends JDialog {
         config.password = new String(passwordField.getPassword());
         config.keyFile = keyFileField.getText();
         config.path = pathField.getText();
+        config.charset = charsetField.getText();
         dispose();
     }
 
