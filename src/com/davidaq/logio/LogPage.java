@@ -20,8 +20,8 @@ public class LogPage implements TabPage.Content {
     private RemoteLogConfig logConfig;
     private LogInput input;
 
-    private int currentPos = 0;
-    private int lastPos = 0;
+    private long currentPos = 0;
+    private long lastPos = 0;
     private int sVal = 0;
     private long updateTimestamp;
     private String text = "";
@@ -79,11 +79,11 @@ public class LogPage implements TabPage.Content {
         }
         lastUpdate = now;
         FontMetrics metrics = textPane.getFontMetrics(textPane.getFont());
-        int lineHeight = metrics.getHeight();
-        int visibleHeight = scrollPane.getViewport().getHeight() - 5;
-        int visibleLines = visibleHeight / lineHeight;
-        int lineCount = input.getLineCount();
-        int row;
+        long lineHeight = metrics.getHeight();
+        long visibleHeight = scrollPane.getViewport().getHeight() - 5;
+        long visibleLines = visibleHeight / lineHeight;
+        long lineCount = input.getLineCount();
+        long row;
         boolean isBottom = false;
         if (forceUsePos) {
             row = currentPos;
@@ -96,7 +96,7 @@ public class LogPage implements TabPage.Content {
         } else {
             row = currentPos;
         }
-        int lastVisibleLine = row + visibleLines - 1;
+        long lastVisibleLine = row + visibleLines - 1;
         if (lastVisibleLine >= lineCount) {
             lastVisibleLine = lineCount - 1;
             row = lastVisibleLine - visibleLines + 1;
@@ -110,7 +110,7 @@ public class LogPage implements TabPage.Content {
         currentPos = row;
         lastPos = lastVisibleLine;
         StringBuilder text = new StringBuilder();
-        for (int i = row; i <= lastVisibleLine; i++) {
+        for (long i = row; i <= lastVisibleLine; i++) {
             String line = input.getLineAt(i);
             text.append(line);
             if (i < lastVisibleLine)
@@ -123,17 +123,17 @@ public class LogPage implements TabPage.Content {
             textPane.setSelectionStart(0);
             textPane.setSelectionEnd(0);
         }
-        int vMax = lineCount - visibleLines;
+        long vMax = lineCount - visibleLines;
         if (vMax < 1) {
             vScroll.setValues(0, 100, 0, 100);
         } else {
             if (vMax > 5000)
                 vMax = 5000;
-            int vExt = divideInc(visibleLines * vMax, lineCount);
+            long vExt = divideInc(visibleLines * vMax, lineCount);
             if (vExt < vMax / 12) {
                 vExt = vMax / 12;
             }
-            int sVal;
+            long sVal;
             if (!forceUsePos && isBottom) {
                 sVal = vMax - vExt;
             } else {
@@ -145,14 +145,14 @@ public class LogPage implements TabPage.Content {
                         sVal = vMax - vExt - 1;
                     }
                 }
-                this.sVal = sVal;
+                this.sVal = (int) sVal;
             }
-            vScroll.setValues(sVal, vExt, 0, vMax);
+            vScroll.setValues((int) sVal, (int) vExt, 0, (int) vMax);
         }
     }
 
-    private int divideInc(int a, int b) {
-        int ret = a / b;
+    private long divideInc(long a, long b) {
+        long ret = a / b;
         if (a % b > 0)
             ret++;
         return ret;

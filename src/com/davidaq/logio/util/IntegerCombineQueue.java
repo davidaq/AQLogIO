@@ -3,10 +3,10 @@ package com.davidaq.logio.util;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class IntegerCombineQueue implements Queue<Integer, IntegerCombineQueue.Block> {
+public class IntegerCombineQueue implements Queue<Long, IntegerCombineQueue.Block> {
     public static class Block {
-        public int start;
-        public int length;
+        public long start;
+        public long length;
         boolean disposed = false;
     }
 
@@ -14,11 +14,11 @@ public class IntegerCombineQueue implements Queue<Integer, IntegerCombineQueue.B
         public Block value;
     }
 
-    private final HashMap<Integer, BlockRef> blockMap = new HashMap<>();
+    private final HashMap<Long, BlockRef> blockMap = new HashMap<>();
     private final LinkedList<Block> queue = new LinkedList<>();
 
     @Override
-    public void push(Integer val) {
+    public void push(Long val) {
         synchronized (this) {
             if (blockMap.containsKey(val)) {
                 return;

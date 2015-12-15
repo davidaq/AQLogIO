@@ -1,9 +1,9 @@
 package com.davidaq.logio.model;
 
 public interface LogInput {
-    public int getLineCount();
+    public long getLineCount();
 
-    public String getLineAt(int lineNum);
+    public String getLineAt(long lineNum);
 
     public long getUpdateTimestamp();
 

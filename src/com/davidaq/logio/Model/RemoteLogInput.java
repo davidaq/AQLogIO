@@ -20,15 +20,15 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
     public RemoteLogInput(RemoteLogConfig config) {
         this.config = config;
         consumer.start();
-        getLineQueue.push(-20);
+        getLineQueue.push(-20L);
     }
 
-    private volatile int lineCount = 0;
+    private volatile long lineCount = 0;
 
     @Override
-    public int getLineCount() {
+    public long getLineCount() {
         if (consumer.isIdle()) {
-            getLineQueue.push(-10);
+            getLineQueue.push(-10L);
         }
         if (statusMessage != null)
             return 1;
@@ -36,10 +36,10 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
     }
 
 
-    private final LimitedCache<Integer, String> linesCache = new LimitedCache<>(100);
+    private final LimitedCache<Long, String> linesCache = new LimitedCache<>(100);
 
     @Override
-    public String getLineAt(int lineNum) {
+    public String getLineAt(long lineNum) {
         if (lineNum < 0)
             return "";
         if (statusMessage != null && lineNum == 0)
@@ -71,11 +71,16 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
 
     @Override
     public void consume(IntegerCombineQueue.Block value) {
-        if (value.start == -20) {
+        if (value.start == -20L) {
             try {
                 ssh = new JSch();
+                if (config.keyFile != null && !config.keyFile.isEmpty()) {
+                    ssh.addIdentity(config.keyFile);
+                }
                 session = ssh.getSession(config.username, config.host, config.port);
-                session.setPassword(config.password);
+                if (config.password != null && !config.password.isEmpty()) {
+                    session.setPassword(config.password);
+                }
                 session.setConfig("StrictHostKeyChecking", "no");
                 session.connect();
                 helper = new ExecHelper(session, config.charset);
@@ -87,13 +92,12 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
                 }
                 e.printStackTrace();
             }
-        } else if (value.start == -10) {
+        } else if (value.start == -10L) {
             StringBuilder output = new StringBuilder();
             if (0 == helper.exec("wc -l '" + config.path + "'", output)) {
                 String num = output.toString().split(" ")[0];
                 try {
-                    int val = Integer.parseInt(num);
-                    lineCount = val;
+                    lineCount = Long.parseLong(num);
                     statusMessage = null;
                     return;
                 } catch (NumberFormatException e) {
@@ -104,8 +108,8 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
             }
         } else {
             StringBuilder output = new StringBuilder();
-            int start = value.start + 1;
-            int end = value.start + value.length;
+            long start = value.start + 1;
+            long end = value.start + value.length;
             if (0 == helper.exec("sed -n -e '" + start + "," + end + "p' '" + config.path + "'", output)) {
                 String ret = output.toString();
                 String[] lines = ret.split("\r?\n\r?");

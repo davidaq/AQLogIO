@@ -17,12 +17,12 @@ public class TestLogInput implements LogInput {
     }
 
     @Override
-    public int getLineCount() {
+    public long getLineCount() {
         return N;
     }
 
     @Override
-    public String getLineAt(int lineNum) {
+    public String getLineAt(long lineNum) {
         return "----------------------------------------------------------------------------------" + lineNum;
     }
 
