@@ -186,6 +186,7 @@ public class MainUI extends JFrame {
     public static void main(String[] args) {
         MainUI dialog = mainUI;
         dialog.pack();
+        dialog.resize(800, 580);
         dialog.setLocationRelativeTo(null);
         dialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         dialog.setVisible(true);

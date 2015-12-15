@@ -4,10 +4,7 @@ import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class ExecHelper {
     private final Session session;
@@ -25,18 +22,20 @@ public class ExecHelper {
             channel.setCommand(command);
             channel.setInputStream(null);
             channel.setErrStream(null);
-            InputStream in = new BufferedInputStream(channel.getInputStream());
-            InputStreamReader reader = new InputStreamReader(in, charset);
+            InputStream in = channel.getInputStream();
             channel.connect();
-            char buff[] = new char[1000];
-            while (true) {
+            ByteArrayOutputStream pool = new ByteArrayOutputStream(1005);
+            byte buff[] = new byte[1005];
+            boolean end = false;
+            while (!end) {
                 while (in.available() > 0) {
-                    int len = reader.read(buff);
-                    if (len < 0)
+                    int len = in.read(buff, 0, 1000);
+                    if (len <= 0) {
                         break;
-                    output.append(buff, 0, len);
+                    }
+                    pool.write(buff, 0, len);
                 }
-                if (channel.isClosed()) {
+                if (channel.isEOF() && channel.isClosed()) {
                     if (in.available() > 0)
                         continue;
                     break;
@@ -47,6 +46,8 @@ public class ExecHelper {
                     e.printStackTrace();
                 }
             }
+            byte[] bout = pool.toByteArray();
+            output.append(new String(bout, 0, bout.length, charset));
             return channel.getExitStatus();
         } catch (JSchException | IOException e) {
             e.printStackTrace();
