@@ -1,8 +1,8 @@
 package com.davidaq.logio.util;
 
 public class QueueConsumer<Type> implements Runnable {
-    public static interface ConsumeLogic<Type> {
-        public void consume(Type value);
+    public interface ConsumeLogic<Type> {
+        void consume(Type value);
     }
 
     private final Queue<?, Type> queue;
@@ -33,7 +33,7 @@ public class QueueConsumer<Type> implements Runnable {
             synchronized (queue) {
                 try {
                     queue.wait(1000);
-                    Thread.sleep(20);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

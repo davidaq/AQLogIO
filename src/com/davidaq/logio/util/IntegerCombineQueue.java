@@ -37,9 +37,12 @@ public class IntegerCombineQueue implements Queue<Long, IntegerCombineQueue.Bloc
             }
             existing = blockMap.get(val + 1);
             if (existing != null) {
-                existing.value.disposed = true;
                 ref.value.length += existing.value.length;
-                existing.value = ref.value;
+                for (long i = existing.value.start, c = i + existing.value.length; i < c; i++) {
+                    existing = blockMap.get(i);
+                    existing.value.disposed = true;
+                    existing.value = ref.value;
+                }
             }
             this.notify();
         }
