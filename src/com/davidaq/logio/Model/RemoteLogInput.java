@@ -1,6 +1,5 @@
 package com.davidaq.logio.model;
 
-import com.apple.eawt.AppEvent;
 import com.davidaq.logio.util.ExecHelper;
 import com.davidaq.logio.util.IntegerCombineQueue;
 import com.davidaq.logio.util.LimitedCache;
@@ -37,7 +36,7 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
     }
 
 
-    private final LimitedCache<Integer, String> linesCache = new LimitedCache<>(250);
+    private final LimitedCache<Integer, String> linesCache = new LimitedCache<>(100);
 
     @Override
     public String getLineAt(int lineNum) {
@@ -94,10 +93,9 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
                 String num = output.toString().split(" ")[0];
                 try {
                     int val = Integer.parseInt(num);
-                    if (lineCount == val)
-                        return;
                     lineCount = val;
                     statusMessage = null;
+                    return;
                 } catch (NumberFormatException e) {
                     statusMessage = "未知服务器响应信息";
                 }

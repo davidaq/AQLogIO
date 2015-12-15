@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06a4ae6f-957b-4a2f-96bf-28dca9b51c0c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.form" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.form" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" />
     </list>
     <ignored path="AQLogIO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,9 +28,12 @@
       <file leaf-file-name="LogPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22203948">
-              <caret line="72" column="67" selection-start-line="72" selection-start-column="67" selection-end-line="72" selection-end-column="67" />
-              <folding />
+            <state vertical-scroll-proportion="0.59210527">
+              <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
+              <folding>
+                <element signature="e#1814#1937#0" expanded="true" />
+                <element signature="e#1936#1937#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,24 +49,9 @@
         <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="86" column="45" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
+              <caret line="38" column="81" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
-              <folding>
-                <element signature="e#3183#3460#0" expanded="true" />
-                <element signature="e#3459#3460#0" expanded="true" />
-                <element signature="e#3503#3970#0" expanded="true" />
-                <element signature="e#3969#3970#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,10 +108,10 @@
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.form" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/ConfigRemoteLogDialog.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogConfig.java" />
-        <option value="$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.form" />
+        <option value="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
+        <option value="$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" />
       </list>
     </option>
@@ -775,25 +759,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+          <caret line="177" column="12" selection-start-line="177" selection-start-column="12" selection-end-line="177" selection-end-column="12" />
           <folding>
-            <element signature="e#3183#3460#0" expanded="true" />
-            <element signature="e#3459#3460#0" expanded="true" />
-            <element signature="e#3503#3970#0" expanded="true" />
-            <element signature="e#3969#3970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="45" selection-start-line="86" selection-start-column="45" selection-end-line="86" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#5083#5591#0" expanded="true" />
+            <element signature="e#5590#5591#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -803,11 +780,24 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="81" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22203948">
-          <caret line="72" column="67" selection-start-line="72" selection-start-column="67" selection-end-line="72" selection-end-column="67" />
-          <folding />
+        <state vertical-scroll-proportion="0.59210527">
+          <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
+          <folding>
+            <element signature="e#1814#1937#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
