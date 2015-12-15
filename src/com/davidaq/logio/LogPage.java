@@ -127,9 +127,12 @@ public class LogPage implements TabPage.Content {
         if (vMax < 1) {
             vScroll.setValues(0, 100, 0, 100);
         } else {
-            if (vMax > 100)
-                vMax = 100;
+            if (vMax > 5000)
+                vMax = 5000;
             int vExt = divideInc(visibleLines * vMax, lineCount);
+            if (vExt < vMax / 12) {
+                vExt = vMax / 12;
+            }
             int sVal;
             if (!forceUsePos && isBottom) {
                 sVal = vMax - vExt;

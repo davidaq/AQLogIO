@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06a4ae6f-957b-4a2f-96bf-28dca9b51c0c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" afterPath="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" />
     </list>
     <ignored path="AQLogIO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LogPage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LogPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.49342105">
+              <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
               <folding>
                 <element signature="e#1814#1937#0" expanded="true" />
                 <element signature="e#1936#1937#0" expanded="true" />
@@ -64,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+              <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -82,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExecHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ExecHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38322368">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -145,9 +142,9 @@
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogConfig.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.form" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/model/RemoteLogInput.java" />
-        <option value="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" />
-        <option value="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
         <option value="$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java" />
+        <option value="$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java" />
       </list>
     </option>
   </component>
@@ -332,6 +329,10 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="aqlogio" />
   </component>
   <component name="RunManager" selected="Application.Run">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -803,14 +804,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java">
+    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
-          <folding>
-            <element signature="e#1814#1937#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
-          </folding>
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -819,15 +822,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/MainUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+          <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -842,11 +840,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/util/ExecHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/com/davidaq/logio/LogPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38322368">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.49342105">
+          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
+          <folding>
+            <element signature="e#1814#1937#0" expanded="true" />
+            <element signature="e#1936#1937#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
