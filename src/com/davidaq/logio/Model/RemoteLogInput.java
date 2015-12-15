@@ -51,7 +51,7 @@ public class RemoteLogInput implements LogInput, QueueConsumer.ConsumeLogic<Inte
             }
         }
         getLineQueue.push(lineNum);
-        return "";
+        return "...";
     }
 
     private long timestamp = 0;
