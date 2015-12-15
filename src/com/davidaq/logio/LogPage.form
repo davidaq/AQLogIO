@@ -9,7 +9,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="dc14" class="javax.swing.JScrollBar" binding="vscroll">
+      <component id="dc14" class="javax.swing.JScrollBar" binding="vScroll">
         <constraints border-constraint="East"/>
         <properties>
           <blockIncrement value="1"/>

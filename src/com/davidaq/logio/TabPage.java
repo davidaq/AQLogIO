@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 public class TabPage {
 
-    public TabPage(Content content) {
+    public TabPage(final Content content) {
         this.content = content;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

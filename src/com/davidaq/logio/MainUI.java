@@ -1,7 +1,7 @@
 package com.davidaq.logio;
 
-import com.davidaq.logio.Model.LogListModel;
-import com.davidaq.logio.Model.RemoteLogConfig;
+import com.davidaq.logio.model.LogListModel;
+import com.davidaq.logio.model.RemoteLogConfig;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;

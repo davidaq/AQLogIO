@@ -1,4 +1,4 @@
-package com.davidaq.logio.Model;
+package com.davidaq.logio.util;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;

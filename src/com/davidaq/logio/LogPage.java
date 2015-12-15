@@ -1,23 +1,18 @@
 package com.davidaq.logio;
 
-import com.davidaq.logio.Model.LogInput;
-import com.davidaq.logio.Model.RemoteLogConfig;
-import com.davidaq.logio.Model.RemoteLogInput;
-import com.davidaq.logio.Model.TestLogInput;
+import com.davidaq.logio.model.LogInput;
+import com.davidaq.logio.model.RemoteLogConfig;
+import com.davidaq.logio.model.RemoteLogInput;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.font.LineMetrics;
-import java.awt.geom.Rectangle2D;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.*;
 import java.util.Timer;
 
 public class LogPage implements TabPage.Content {
     private JPanel contentPane;
-    private JScrollBar vscroll;
+    private JScrollBar vScroll;
     private JTextPane textPane;
     private JPanel textWrapPanel;
     private JScrollPane scrollPane;
@@ -27,7 +22,7 @@ public class LogPage implements TabPage.Content {
 
     private int currentPos = 0;
     private int lastPos = 0;
-    private int sval = 0;
+    private int sVal = 0;
     private long updateTimestamp;
 
     public LogPage(RemoteLogConfig logConfig) {
@@ -40,8 +35,8 @@ public class LogPage implements TabPage.Content {
         textWrapPanel.setOpaque(false);
         textPane.setOpaque(false);
 
-        vscroll.setMaximum(100);
-        vscroll.setValue(100);
+        vScroll.setMaximum(100);
+        vScroll.setValue(100);
 
         contentPane.addComponentListener(new ComponentAdapter() {
             @Override
@@ -77,30 +72,32 @@ public class LogPage implements TabPage.Content {
         int lineHeight = metrics.getHeight();
         int visibleHeight = scrollPane.getViewport().getHeight();
         int visibleLines = visibleHeight / lineHeight;
+        int lineCount = input.getLineCount();
         int row;
         boolean isBottom = false;
         if (forceUsePos) {
             row = currentPos;
-        } else if (vscroll.getValue() >= vscroll.getMaximum() - vscroll.getBlockIncrement()) {
-            row = input.getLineCount();
+        } else if (vScroll.getValue() >= vScroll.getMaximum() - vScroll.getBlockIncrement()) {
+            row = lineCount;
             isBottom = true;
-        } else if (sval != vscroll.getValue()) {
-            sval = vscroll.getValue();
-            row = vscroll.getValue() * (input.getLineCount() - visibleLines);
-            row = row / vscroll.getMaximum() + (row % vscroll.getMaximum() > 0 ? 1 : 0);
+        } else if (sVal != vScroll.getValue()) {
+            sVal = vScroll.getValue();
+            row = vScroll.getValue() * (lineCount - visibleLines);
+            row = row / vScroll.getMaximum() + (row % vScroll.getMaximum() > 0 ? 1 : 0);
         } else {
             row = currentPos;
         }
         int lastVisibleLine = row + visibleLines - 1;
-        if (lastVisibleLine >= input.getLineCount()) {
-            lastVisibleLine = input.getLineCount() - 1;
+        if (lastVisibleLine >= lineCount) {
+            lastVisibleLine = lineCount - 1;
             row = lastVisibleLine - visibleLines + 1;
         }
         if (row < 0)
             row = 0;
-        if (updateTimestamp <= input.getUpdateTimestamp() && currentPos == row && lastPos == lastVisibleLine)
+        long ts = input.getUpdateTimestamp();
+        if (ts <= updateTimestamp && currentPos == row && lastPos == lastVisibleLine)
             return;
-        updateTimestamp = input.getUpdateTimestamp();
+        updateTimestamp = ts;
         currentPos = row;
         lastPos = lastVisibleLine;
         StringBuilder text = new StringBuilder();
@@ -111,20 +108,22 @@ public class LogPage implements TabPage.Content {
                 text.append('\n');
         }
         String str = text.toString();
+        //int hVal = scrollPane.getHorizontalScrollBar().getValue();
         textPane.setText(str);
-        int vMax = input.getLineCount() - visibleLines;
+        scrollPane.getHorizontalScrollBar().setValue(scrollPane.getHorizontalScrollBar().getMinimum());
+        int vMax = lineCount - visibleLines;
         if (vMax < 1) {
-            vscroll.setValue(0);
-            vscroll.setMaximum(1);
+            vScroll.setValue(0);
+            vScroll.setMaximum(1);
         } else {
             if (vMax > 10)
                 vMax = 10;
-            vscroll.setMaximum(vMax);
+            vScroll.setMaximum(vMax);
             if (isBottom) {
-                vscroll.setValue(vMax - vscroll.getBlockIncrement());
+                vScroll.setValue(vMax - vScroll.getBlockIncrement());
             } else if (forceUsePos) {
-                sval = row * (vMax - vscroll.getBlockIncrement()) / input.getLineCount();
-                vscroll.setValue(sval);
+                sVal = row * (vMax - vScroll.getBlockIncrement()) / lineCount;
+                vScroll.setValue(sVal);
             }
         }
     }

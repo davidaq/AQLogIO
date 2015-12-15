@@ -1,4 +1,7 @@
-package com.davidaq.logio.Model;
+package com.davidaq.logio.model;
+
+import com.davidaq.logio.util.EncodedInputStream;
+import com.davidaq.logio.util.EncodedOutputStream;
 
 import javax.swing.*;
 import java.io.*;
@@ -93,6 +96,7 @@ public class LogListModel extends DefaultListModel<RemoteLogConfig> {
     private void releaseLock() throws IOException {
         lock.release();
         lockChannel.close();
+        lockFile.delete();
     }
 
     public void fireUpdate(int index) {

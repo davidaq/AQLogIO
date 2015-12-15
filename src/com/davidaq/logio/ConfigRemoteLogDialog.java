@@ -1,6 +1,6 @@
 package com.davidaq.logio;
 
-import com.davidaq.logio.Model.RemoteLogConfig;
+import com.davidaq.logio.model.RemoteLogConfig;
 
 import javax.swing.*;
 import java.awt.event.*;

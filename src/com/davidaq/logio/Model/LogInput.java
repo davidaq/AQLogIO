@@ -1,4 +1,4 @@
-package com.davidaq.logio.Model;
+package com.davidaq.logio.model;
 
 public interface LogInput {
     public int getLineCount();

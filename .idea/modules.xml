@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LogIO.iml" filepath="$PROJECT_DIR$/LogIO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AQLogIO.iml" filepath="$PROJECT_DIR$/AQLogIO.iml" />
     </modules>
   </component>
 </project>

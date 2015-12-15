@@ -1,4 +1,4 @@
-package com.davidaq.logio.Model;
+package com.davidaq.logio.util;
 
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSchException;
@@ -26,7 +26,7 @@ public class ExecHelper {
             InputStream in = new BufferedInputStream(channel.getInputStream());
             InputStreamReader reader = new InputStreamReader(in);
             channel.connect();
-            char buff[] = new char[400];
+            char buff[] = new char[1000];
             while (true) {
                 while (in.available() > 0) {
                     int len = reader.read(buff);
@@ -40,7 +40,7 @@ public class ExecHelper {
                     break;
                 }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

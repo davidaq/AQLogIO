@@ -1,4 +1,4 @@
-package com.davidaq.logio.Model;
+package com.davidaq.logio.model;
 
 import java.util.Timer;
 import java.util.TimerTask;
