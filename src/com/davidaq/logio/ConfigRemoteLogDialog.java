@@ -1,6 +1,8 @@
 package com.davidaq.logio;
 
 import com.davidaq.logio.model.RemoteLogConfig;
+import com.davidaq.logio.model.SSHFileSystemView;
+import com.jcraft.jsch.JSchException;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -19,6 +21,7 @@ public class ConfigRemoteLogDialog extends JDialog {
     private JButton keyFileBtn;
     private JTextField pathField;
     private JTextField charsetField;
+    private JButton pathBtn;
     private boolean canceled = false;
 
     private final RemoteLogConfig config;
@@ -67,6 +70,19 @@ public class ConfigRemoteLogDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        keyFileBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                navigateKeyFile();
+            }
+        });
+        pathBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                navigatePath();
+            }
+        });
     }
 
     private void onOK() {
@@ -112,5 +128,35 @@ public class ConfigRemoteLogDialog extends JDialog {
 
     private void createUIComponents() {
         portField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+    }
+
+    private void navigateKeyFile() {
+        JFileChooser chooser = new JFileChooser();
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            keyFileField.setText(chooser.getSelectedFile().getAbsolutePath());
+        }
+    }
+
+    private void navigatePath() {
+        JFileChooser chooser = new JFileChooser();
+        int port;
+        try {
+            port = Integer.valueOf(portField.getText());
+        } catch (Exception e) {
+            port = 22;
+        }
+        SSHFileSystemView view = null;
+        try {
+            view = new SSHFileSystemView(hostField.getText(), port, usernameField.getText(), new String(passwordField.getPassword()), keyFileField.getText());
+        } catch (JSchException e) {
+            JOptionPane.showMessageDialog(this, "服务器连接失败");
+            return;
+        }
+        chooser.setFileSystemView(view);
+        chooser.setCurrentDirectory(view.getHomeDirectory());
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            pathField.setText(chooser.getSelectedFile().getAbsolutePath());
+        }
+        view.close();
     }
 }
