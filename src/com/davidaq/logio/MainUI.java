@@ -4,6 +4,7 @@ import com.davidaq.logio.model.LogListModel;
 import com.davidaq.logio.model.RemoteLogConfig;
 
 import javax.swing.*;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.awt.event.ActionEvent;

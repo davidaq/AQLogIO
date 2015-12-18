@@ -5,6 +5,7 @@ import com.davidaq.logio.model.SSHFileSystemView;
 import com.jcraft.jsch.JSchException;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import java.awt.event.*;
 import java.text.NumberFormat;
 
@@ -138,7 +139,6 @@ public class ConfigRemoteLogDialog extends JDialog {
     }
 
     private void navigatePath() {
-        JFileChooser chooser = new JFileChooser();
         int port;
         try {
             port = Integer.valueOf(portField.getText());
@@ -152,10 +152,11 @@ public class ConfigRemoteLogDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "服务器连接失败");
             return;
         }
-        chooser.setFileSystemView(view);
-        chooser.setCurrentDirectory(view.getHomeDirectory());
+        JFileChooser chooser = new JFileChooser(view);
+        chooser.setFileHidingEnabled(false);
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            pathField.setText(chooser.getSelectedFile().getAbsolutePath());
+            if (chooser.getSelectedFile() != null)
+                pathField.setText(chooser.getSelectedFile().getAbsolutePath());
         }
         view.close();
     }
